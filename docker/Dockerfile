@@ -19,3 +19,9 @@ RUN composer global require "laravel/installer"
 #modRewriteの有効化
 RUN mv /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled
 RUN /bin/sh -c a2enmod rewrite
+
+# Node.jsとnpmのインストール
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - \
+  && apt-get install -y nodejs \
+  && apt-get update \
+  && apt-get install gnupg
